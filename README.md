@@ -2,8 +2,8 @@
 
 A bold, mobile-first **digital business card** for a café. Print a QR code on
 your physical card, and customers who scan it land on a one-page site with every
-way to connect — WhatsApp, Google Maps, Instagram, Facebook, TikTok, phone, and
-(once you add them) a menu and website — a single tap away.
+way to connect — phone, Google Maps, Instagram, Facebook, TikTok, and (once you
+add them) a menu and website — a single tap away.
 
 Built with **React + Vite**, **Tailwind CSS**, **Lucide React** and
 **Framer Motion**. No backend, no database — just a fast static page.
@@ -12,16 +12,18 @@ Built with **React + Vite**, **Tailwind CSS**, **Lucide React** and
 
 ## 🎨 Design
 
-The look is café packaging: an orange label for the hero, brown "ink" for type
-and outlines, yellow tape across the seam, cream paper for the page. Buttons are
-flat "stickers" that lift on hover and press flat on tap.
+The look is café packaging: a dark-brown label for the hero, with orange accents
+and cream lettering, brown "ink" for type and outlines on the page, yellow tape
+across the seam, cream paper for the page. Below the
+hero, every link is the same plain row (icon, bold title, one line of text); a
+yellow wash sweeps across a row on hover and fills it on tap.
 
 | Colour | Hex       | Role                                                  |
 | ------ | --------- | ----------------------------------------------------- |
-| Orange | `#EC6426` | Primary accent: hero, the main action                 |
-| Yellow | `#F8A91F` | Highlights: ticker tape, seal, secondary tiles        |
-| Cream  | `#FDE3CF` | Paper: page background, comfortable reading           |
-| Brown  | `#632713` | Ink: all type, outlines, the menu tile and footer     |
+| Orange | `#EC6426` | Accent: name shadow, arch shadow and rings in the hero |
+| Yellow | `#F8A91F` | Highlights: ticker tape, seal, arch, link hover       |
+| Cream  | `#FDE3CF` | Paper: page background, the hero name and stickers    |
+| Brown  | `#632713` | Ink: the hero and footer backgrounds, all page type   |
 
 The palette lives in [`tailwind.config.js`](tailwind.config.js) and replaces
 Tailwind's defaults — **only these four colours compile**, so the design can't
@@ -29,7 +31,7 @@ drift off-brand by accident.
 
 | Font          | Used for                                          |
 | ------------- | ------------------------------------------------- |
-| Lilita One    | The café name, big action labels, the ticker      |
+| Lilita One    | The café name, the ticker, "Come find us"         |
 | Fraunces      | Editorial accents: tagline, link titles, address  |
 | DM Sans       | Everything functional: labels, buttons, small text |
 
@@ -52,8 +54,9 @@ in the `fontFamily` section of [`tailwind.config.js`](tailwind.config.js).
 Remove the old `@font-face` rules and preload links for any font you stop using.
 
 **Contrast rules baked into the design:** brown on cream is 9.3:1 and brown on
-yellow 5.8:1. Brown on orange is only 3.5:1, so it is used for **large type
-only** (24px+). Cream text is never placed on orange. An automated axe-core
+yellow 5.8:1; cream on brown (the hero name and tagline) is the same 9.3:1.
+Brown on orange is only 3.5:1 and cream on orange 2.7:1, so orange is never
+used behind text, only for shadows, rings and borders. An automated axe-core
 audit reports 0 violations.
 
 **Layout:** on a phone the page *is* the card, edge to edge. From tablet up it
@@ -98,32 +101,27 @@ source of truth. Everything below is edited there.
   ~800×1000, under 150 KB) to show a photo in the arch instead
 - `badgeText` — text that circles the rotating seal (end it with `" • "`)
 - `ticker` — the words that scroll along the yellow tape (shown in capitals)
-- `copy` — the two small section headings
+- `copy.visit` — the heading on the location card
 
 **Location & contact**
 - `city` (the small pill), `address`, `mapsUrl` (your Google Maps share link)
 - `directionsTo` — where the **Get Directions** button navigates. A Google Maps
   plus code works well (it pins the exact spot); if empty, `address` is used
-- `phone` in full international format (e.g. `+9779865098275`) and `whatsapp`
-  as digits only (e.g. `9779865098275`). Leave `whatsapp` empty if the number
-  isn't on WhatsApp, and that button is hidden
+- `phone` in full international format (e.g. `+9779865098275`) is what a tap
+  dials; `phoneDisplay` (e.g. `9865098275`) is how the number is written on the
+  page. The phone row shows the number alone
+- `whatsapp` is currently empty, so there is no WhatsApp row or footer icon. To
+  bring them back, enter the number as digits only (e.g. `9779865098275`)
 - `social.instagram`, `social.facebook`, `social.tiktok`, `menuUrl`, `website`
 - `footerMessage`
 
-**How each link is presented** — in the `CONTACT_LINKS` list:
-
-| `layout`  | Look                                       | Best for              |
-| --------- | ------------------------------------------ | --------------------- |
-| `feature` | The big pill button                        | Your #1 action        |
-| `tile`    | Bold colour-blocked squares, two across    | The next two actions  |
-| `row`     | Quiet menu-board style list                | Everything else       |
-
-For `feature` and `tile` links, `tone` picks the colour: `orange`, `yellow` or
-`brown`. **To hide a link**, clear its value in the config (e.g. an empty
-`website`) or set `enabled: false`. **To reorder**, reorder the list.
+**The link list** — `CONTACT_LINKS`, shown top to bottom. Every link has the
+same look, so each entry only needs an `icon`, a `title` and a `label`.
+**To hide a link**, clear its value in the config (e.g. an empty `website`) or
+set `enabled: false`. **To reorder**, reorder the list.
 
 ### Replace the images
-- `public/logo.svg` → your logo. The included one is the Kaffika stag, traced
+- `public/logo.svg` → your logo. The included one is the Kaf-Fika stag, traced
   from the supplied JPG into a crisp vector with a transparent background (an
   SVG or a PNG with a transparent background works best, since a JPG brings its
   own background colour). It is shown large, on a cream plate in the hero arch.
@@ -137,7 +135,7 @@ URL in `og:url`, `og:image` and `twitter:image`.
 
 `public/og-image.png` (1200×630) is what WhatsApp, Facebook, iMessage and X show
 when someone shares your link — likely, since cafés share their QR page. The
-included one shows the Kaffika logo, name and location; replace it with a photo
+included one shows the Kaf-Fika logo, name and location; replace it with a photo
 or your own graphic whenever you like. Use a **PNG or JPG** (social platforms
 don't render SVG).
 
@@ -199,7 +197,7 @@ physical business card.
 ├─ public/
 │  ├─ fonts/                       # Bundled Lilita One, Fraunces, DM Sans (.woff2)
 │  ├─ favicon.svg                  # Browser tab icon
-│  ├─ logo.svg                     # Kaffika logo (vector, transparent)
+│  ├─ logo.svg                     # Kaf-Fika logo (vector, transparent)
 │  └─ og-image.png                 # Link-share preview (1200×630)
 ├─ src/
 │  ├─ main.jsx                     # App entry
@@ -211,11 +209,11 @@ physical business card.
 │  └─ components/
 │     ├─ CafeHeader.jsx            # Orange hero shell: rings, beans, ticker
 │     ├─ CafeProfile.jsx           # Logo, location, animated name, tagline sticker
-│     ├─ HeroArt.jsx               # Arch window (photo or illustration) + seal
+│     ├─ HeroArt.jsx               # Arch window (logo or photo) + seal
 │     ├─ BrandBadge.jsx            # Rotating text seal
 │     ├─ BrandTicker.jsx           # Scrolling yellow tape
-│     ├─ ContactLinks.jsx          # Sorts links into feature / tiles / rows
-│     ├─ SocialLinkCard.jsx        # One link, in any of the three treatments
+│     ├─ ContactLinks.jsx          # The link list, built from the config
+│     ├─ SocialLinkCard.jsx        # One link row: icon, title, label
 │     ├─ LocationSection.jsx       # Street-map graphic, address, Get Directions
 │     ├─ CafeFooter.jsx            # Awning edge, message, socials, copyright
 │     ├─ icons/BrandIcons.jsx      # Instagram / Facebook / WhatsApp marks

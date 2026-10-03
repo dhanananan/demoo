@@ -12,19 +12,20 @@ const BEANS = [
 ];
 
 /**
- * The hero: a block of brand orange with a ring motif behind the artwork, the
+ * The hero: a block of dark brand brown with a ring motif behind the artwork, the
  * café profile on top, and the ticker tape laid across its lower edge.
  */
 export default function CafeHeader() {
   return (
-    <header className="relative isolate bg-orange">
-      {/* Backdrop: concentric rings + beans (decorative, behind everything) */}
+    <header className="relative isolate bg-brown">
+      {/* Backdrop: concentric rings + beans (decorative, behind everything).
+          Drawn in orange so the brand's accent glows against the dark brown. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* Concentric rings, centred on the arch */}
-        <div className="absolute -right-[4.8rem] -top-[3.4rem] h-[23rem] w-[23rem] rounded-full border-2 border-brown/20" />
-        <div className="absolute -right-[1.8rem] -top-[0.4rem] h-[17rem] w-[17rem] rounded-full border-2 border-brown/20" />
+        <div className="absolute -right-[4.8rem] -top-[3.4rem] h-[23rem] w-[23rem] rounded-full border-2 border-orange/40" />
+        <div className="absolute -right-[1.8rem] -top-[0.4rem] h-[17rem] w-[17rem] rounded-full border-2 border-orange/40" />
         {BEANS.map((position) => (
-          <Bean key={position} className={`absolute text-brown/20 ${position}`} />
+          <Bean key={position} className={`absolute text-orange/40 ${position}`} />
         ))}
       </div>
 

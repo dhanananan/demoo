@@ -37,7 +37,7 @@ export default function App() {
       <div className="relative mx-auto w-full max-w-[28rem] overflow-x-clip bg-cream sm:overflow-hidden sm:rounded-[2rem] sm:border-2 sm:border-brown sm:shadow-hard-lg">
         <CafeHeader />
 
-        <main className="px-5 pb-14 pt-16">
+        <main className="px-5 pb-14 pt-10">
           <ContactLinks />
           <div className="mt-12">
             <LocationSection />

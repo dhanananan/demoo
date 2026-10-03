@@ -29,10 +29,10 @@ export default function HeroArt({ className = '' }) {
         transition={{ type: 'spring', stiffness: 120, damping: 18, delay: 0.25 }}
         className="relative"
       >
-        {/* Offset shadow arch */}
+        {/* Offset shadow arch (orange, so it shows against the brown hero) */}
         <div
           aria-hidden="true"
-          className="arch absolute inset-0 translate-x-2 translate-y-2 bg-brown"
+          className="arch absolute inset-0 translate-x-2 translate-y-2 bg-orange"
         />
 
         {/* The arch itself */}

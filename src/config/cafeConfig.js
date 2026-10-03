@@ -15,9 +15,9 @@
 
 export const cafeConfig = {
   // --- Identity -------------------------------------------------------------
-  name: 'Kaffika',
-  // PLACEHOLDER: write your own line.
-  tagline: 'Where every cup tells a story',
+  name: 'Kaf-Fika',
+  // The line on the tilted sticker under the name.
+  tagline: 'Kaf-Fika by Feast & Frost',
   // Logo lives in /public (public/logo.svg). It is shown large in the hero
   // arch. Replace the file to change it, or point this at another path.
   logo: '/logo.svg',
@@ -33,7 +33,6 @@ export const cafeConfig = {
   ticker: ['Kitchen', 'Coffee', 'Community'],
   // Small headings used on the page.
   copy: {
-    online: 'Find us online',
     visit: 'Come find us',
   },
 
@@ -47,9 +46,12 @@ export const cafeConfig = {
 
   // --- Contact --------------------------------------------------------------
   phone: '+9779865098275', // full international format (Nepal = +977)
-  // The same number is used for WhatsApp. If it is NOT on WhatsApp, set this
-  // to '' and the WhatsApp button and footer icon are hidden.
-  whatsapp: '9779865098275', // digits only, country code first, no "+"
+  // How the number is written on the page (the tap still dials `phone` above).
+  phoneDisplay: '9865098275',
+  // WhatsApp is switched OFF (empty hides the WhatsApp row and footer icon).
+  // To bring it back, put the number here: digits only, country code first,
+  // no "+", e.g. '9779865098275'.
+  whatsapp: '',
   whatsappMessage: 'Hi! I found you via your QR code and would love to know more.',
 
   // --- Social & web ---------------------------------------------------------
@@ -79,15 +81,12 @@ export const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination
 )}`;
 
 /**
- * The contact / social links shown on the page. Reorder, remove, or add freely.
+ * The links shown on the page, top to bottom. Every link looks the same (an
+ * icon, a title and a line of text), so reorder, remove or add freely.
  *
- *  icon    instagram | facebook | tiktok | whatsapp | maps | phone | menu | website
- *  layout  how the link is presented, which also sets its importance:
- *            'feature' – the big pill button (use for the #1 action)
- *            'tile'    – bold square tiles, shown two across
- *            'row'     – quiet menu-board rows
- *  tone    colour of 'feature' / 'tile' links: orange | yellow | brown
- *          (ignored for rows)
+ *  icon  instagram | facebook | tiktok | whatsapp | maps | phone | menu | website
+ *  title the bold name   ·   label the line underneath it (leave '' for none;
+ *  then also set `ariaLabel`, the text a screen reader should announce)
  */
 export const CONTACT_LINKS = [
   {
@@ -100,8 +99,18 @@ export const CONTACT_LINKS = [
     )}`,
     enabled: Boolean(cafeConfig.whatsapp),
     external: true,
-    layout: 'feature',
-    tone: 'orange',
+  },
+  {
+    id: 'phone',
+    icon: 'phone',
+    // Shows the number alone: no label line. `ariaLabel` is what a screen
+    // reader announces, since the number by itself doesn't say what it does.
+    title: cafeConfig.phoneDisplay || cafeConfig.phone,
+    label: '',
+    ariaLabel: `Call ${cafeConfig.phoneDisplay || cafeConfig.phone}`,
+    href: `tel:${cafeConfig.phone}`,
+    enabled: Boolean(cafeConfig.phone),
+    external: false,
   },
   {
     id: 'maps',
@@ -111,19 +120,6 @@ export const CONTACT_LINKS = [
     href: cafeConfig.mapsUrl,
     enabled: Boolean(cafeConfig.mapsUrl),
     external: true,
-    layout: 'tile',
-    tone: 'yellow',
-  },
-  {
-    id: 'instagram',
-    icon: 'instagram',
-    title: 'Instagram',
-    label: 'Follow us on Instagram',
-    href: cafeConfig.social.instagram,
-    enabled: Boolean(cafeConfig.social.instagram),
-    external: true,
-    layout: 'tile',
-    tone: 'brown',
   },
   {
     id: 'menu',
@@ -133,8 +129,15 @@ export const CONTACT_LINKS = [
     href: cafeConfig.menuUrl,
     enabled: Boolean(cafeConfig.menuUrl),
     external: true,
-    layout: 'tile',
-    tone: 'yellow',
+  },
+  {
+    id: 'instagram',
+    icon: 'instagram',
+    title: 'Instagram',
+    label: 'Follow us on Instagram',
+    href: cafeConfig.social.instagram,
+    enabled: Boolean(cafeConfig.social.instagram),
+    external: true,
   },
   {
     id: 'facebook',
@@ -144,7 +147,6 @@ export const CONTACT_LINKS = [
     href: cafeConfig.social.facebook,
     enabled: Boolean(cafeConfig.social.facebook),
     external: true,
-    layout: 'row',
   },
   {
     id: 'tiktok',
@@ -154,17 +156,6 @@ export const CONTACT_LINKS = [
     href: cafeConfig.social.tiktok,
     enabled: Boolean(cafeConfig.social.tiktok),
     external: true,
-    layout: 'row',
-  },
-  {
-    id: 'phone',
-    icon: 'phone',
-    title: 'Call us',
-    label: 'Call the café',
-    href: `tel:${cafeConfig.phone}`,
-    enabled: Boolean(cafeConfig.phone),
-    external: false,
-    layout: 'row',
   },
   {
     id: 'website',
@@ -174,6 +165,5 @@ export const CONTACT_LINKS = [
     href: cafeConfig.website,
     enabled: Boolean(cafeConfig.website),
     external: true,
-    layout: 'row',
   },
 ];

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="16 14 860 1064" role="img" aria-label="Kaffika logo: a stag's head in line art with a small flame between the antlers">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="16 14 860 1064" role="img" aria-label="Kaf-Fika logo: a stag's head in line art with a small flame between the antlers">
 <style>
   .flame{transform-box:fill-box;transform-origin:50% 100%;animation:flicker 2.8s ease-in-out infinite}
   @keyframes flicker{0%,100%{transform:scale(1,1) skewX(0);opacity:1}30%{transform:scale(.95,1.06) skewX(-2deg);opacity:.9}60%{transform:scale(1.04,.96) skewX(2deg);opacity:1}80%{transform:scale(.98,1.03) skewX(-1deg);opacity:.94}}

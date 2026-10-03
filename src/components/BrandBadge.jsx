@@ -21,7 +21,7 @@ export default function BrandBadge({ className = '' }) {
   return (
     <div
       aria-hidden="true"
-      className={`relative rounded-full border-2 border-brown bg-yellow shadow-hard-sm ${className}`}
+      className={`relative rounded-full border-2 border-brown bg-yellow shadow-[0_3px_0_0_theme(colors.orange)] ${className}`}
     >
       {/* The ring of text turns slowly; the centre stays put */}
       <div className="absolute inset-0 animate-spin-slow">
