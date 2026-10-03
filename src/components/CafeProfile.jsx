@@ -142,8 +142,10 @@ export default function CafeProfile() {
           transition={{ type: 'spring', stiffness: 200, damping: 14, delay: 0.75 }}
           className="origin-left"
         >
-          {/* Brown label with a thin cream edge, so it reads on the brown hero */}
-          <p className="inline-block max-w-[6.5rem] -rotate-2 text-balance rounded-lg border-2 border-cream/70 bg-brown px-3 py-2 font-serif text-[1.0625rem] font-medium italic leading-snug text-cream">
+          {/* Brown label with a thin cream edge, so it reads on the brown hero.
+              One line; the text steps down a size on the narrowest phones so
+              the label never runs under the arch. */}
+          <p className="inline-block -rotate-2 whitespace-nowrap rounded-lg border-2 border-cream/70 bg-brown px-3 py-2 font-serif text-[0.9375rem] font-medium italic leading-snug text-cream min-[360px]:text-[1.0625rem]">
             {cafeConfig.tagline}
           </p>
         </motion.div>
