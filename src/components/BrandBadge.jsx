@@ -24,7 +24,7 @@ export default function BrandBadge({ className = '' }) {
       className={`relative rounded-full border-2 border-brown bg-yellow shadow-hard-sm ${className}`}
     >
       {/* The ring of text turns slowly; the centre stays put */}
-      <div className="h-full w-full animate-spin-slow">
+      <div className="absolute inset-0 animate-spin-slow">
         <svg viewBox="0 0 100 100" className="h-full w-full" focusable="false">
           <defs>
             <path id={pathId} d={RING_PATH} />

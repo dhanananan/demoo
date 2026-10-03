@@ -37,18 +37,6 @@
 }
 
 @layer components {
-  /* Café name. Sized from the width of the column it lives in (62% of the
-     viewport minus the 1.25rem page gutters), so the longest word always
-     fits at any phone width. --name-shrink (set in CafeProfile) scales it
-     down further for names with a very long word. */
-  .hero-name {
-    font-size: clamp(
-      2.25rem,
-      calc((100vw - 2.5rem) * 0.205 * var(--name-shrink, 1)),
-      calc(5.25rem * var(--name-shrink, 1))
-    );
-  }
-
   /* Arch window: semicircular top, softly rounded bottom. Percentages (not a
      huge px radius) keep the bottom corners from being scaled away. Tuned for
      the 4:5 frame used in HeroArt. */

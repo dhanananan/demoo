@@ -6,13 +6,18 @@ import CupIllustration from './decor/CupIllustration';
 
 /**
  * The hero image, framed as an arch window with a hard brown offset shadow
- * and a rotating seal pinned to its corner. Shows `heroImage` when set, and
- * the built-in illustration otherwise (or if the photo fails to load).
+ * and a rotating seal pinned to its corner. It shows, in order of preference:
+ *   1. `heroImage`, a photo, if one is configured
+ *   2. the café's logo on a cream plate (so the mark is the star)
+ *   3. a built-in cup illustration, if neither can be loaded
  */
 export default function HeroArt({ className = '' }) {
   const prefersReducedMotion = useReducedMotion();
   const [photoFailed, setPhotoFailed] = useState(false);
+  const [logoFailed, setLogoFailed] = useState(false);
+
   const showPhoto = Boolean(cafeConfig.heroImage) && !photoFailed;
+  const showLogo = !showPhoto && Boolean(cafeConfig.logo) && !logoFailed;
 
   // The outer div is positioned by the parent (via className); the inner
   // motion.div is the positioning context for the shadow and the seal.
@@ -31,8 +36,12 @@ export default function HeroArt({ className = '' }) {
         />
 
         {/* The arch itself */}
-        <div className="arch relative aspect-[4/5] overflow-hidden border-2 border-brown bg-cream">
-          {showPhoto ? (
+        <div
+          className={`arch relative aspect-[4/5] overflow-hidden border-2 border-brown ${
+            showLogo ? 'bg-yellow' : 'bg-cream'
+          }`}
+        >
+          {showPhoto && (
             <img
               src={cafeConfig.heroImage}
               alt=""
@@ -43,18 +52,42 @@ export default function HeroArt({ className = '' }) {
               className="h-full w-full object-cover"
               onError={() => setPhotoFailed(true)}
             />
-          ) : (
-            <CupIllustration className="h-full w-full" />
           )}
+
+          {showLogo && (
+            <>
+              {/* Cream plate behind the mark, so thin line-art and the orange
+                  flame both stay clear against the yellow arch */}
+              <span
+                aria-hidden="true"
+                className="absolute left-1/2 top-[57%] aspect-square w-[94%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cream"
+              />
+              {/* Inset from the top so the antler tips clear the arch's curve */}
+              <img
+                src={cafeConfig.logo}
+                alt={`${cafeConfig.name} logo`}
+                width={400}
+                height={500}
+                decoding="async"
+                fetchpriority="high"
+                className="absolute left-[11%] top-[16%] h-[76%] w-[78%] object-contain"
+                onError={() => setLogoFailed(true)}
+              />
+            </>
+          )}
+
+          {!showPhoto && !showLogo && <CupIllustration className="h-full w-full" />}
         </div>
 
         <motion.div
           initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.4, rotate: -120 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ type: 'spring', stiffness: 140, damping: 14, delay: 0.85 }}
-          className="absolute -bottom-8 -right-2"
+          // Half the arch's width and pinned by percentages, so the seal shrinks
+          // with the arch on small phones instead of covering the logo
+          className="absolute -bottom-[14.5%] -right-[4.6%] w-1/2"
         >
-          <BrandBadge className="h-[5.5rem] w-[5.5rem]" />
+          <BrandBadge className="aspect-square w-full" />
         </motion.div>
       </motion.div>
     </div>

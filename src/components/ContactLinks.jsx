@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { Phone, MapPin, BookOpen, Globe } from 'lucide-react';
-import { InstagramIcon, FacebookIcon, WhatsAppIcon } from './icons/BrandIcons';
+import { InstagramIcon, FacebookIcon, TikTokIcon, WhatsAppIcon } from './icons/BrandIcons';
 import SocialLinkCard from './SocialLinkCard';
 import { CONTACT_LINKS, cafeConfig } from '../config/cafeConfig';
 
@@ -8,6 +8,7 @@ import { CONTACT_LINKS, cafeConfig } from '../config/cafeConfig';
 const ICONS = {
   instagram: InstagramIcon,
   facebook: FacebookIcon,
+  tiktok: TikTokIcon,
   whatsapp: WhatsAppIcon,
   maps: MapPin,
   phone: Phone,

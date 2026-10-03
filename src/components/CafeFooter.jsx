@@ -1,4 +1,4 @@
-import { InstagramIcon, FacebookIcon, WhatsAppIcon } from './icons/BrandIcons';
+import { InstagramIcon, FacebookIcon, TikTokIcon, WhatsAppIcon } from './icons/BrandIcons';
 import { Bean } from './decor/Shapes';
 import { cafeConfig } from '../config/cafeConfig';
 
@@ -13,6 +13,7 @@ export default function CafeFooter() {
   const shortcuts = [
     { id: 'instagram', Icon: InstagramIcon, href: cafeConfig.social.instagram, label: 'Instagram' },
     { id: 'facebook', Icon: FacebookIcon, href: cafeConfig.social.facebook, label: 'Facebook' },
+    { id: 'tiktok', Icon: TikTokIcon, href: cafeConfig.social.tiktok, label: 'TikTok' },
     {
       id: 'whatsapp',
       Icon: WhatsAppIcon,

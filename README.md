@@ -2,8 +2,8 @@
 
 A bold, mobile-first **digital business card** for a café. Print a QR code on
 your physical card, and customers who scan it land on a one-page site with every
-way to connect — WhatsApp, Google Maps, menu, Instagram, Facebook, phone and
-website — a single tap away.
+way to connect — WhatsApp, Google Maps, Instagram, Facebook, TikTok, phone, and
+(once you add them) a menu and website — a single tap away.
 
 Built with **React + Vite**, **Tailwind CSS**, **Lucide React** and
 **Framer Motion**. No backend, no database — just a fast static page.
@@ -93,17 +93,21 @@ Open [`src/config/cafeConfig.js`](src/config/cafeConfig.js) — it's the single
 source of truth. Everything below is edited there.
 
 **Identity**
-- `name`, `tagline`, `logo`
-- `heroImage` — leave empty to use the built-in cup illustration, or set a photo
-  path (portrait, ~800×1000, under 150 KB) to show it in the arch window
+- `name`, `tagline`, `logo` (shown large in the hero arch)
+- `heroImage` — leave empty to show the logo, or set a photo path (portrait,
+  ~800×1000, under 150 KB) to show a photo in the arch instead
 - `badgeText` — text that circles the rotating seal (end it with `" • "`)
-- `ticker` — the phrases that scroll along the yellow tape
+- `ticker` — the words that scroll along the yellow tape (shown in capitals)
 - `copy` — the two small section headings
 
 **Location & contact**
-- `city`, `address`, `mapsUrl`
-- `phone` (e.g. `+15551234567`), `whatsapp` (digits only, e.g. `15551234567`)
-- `social.instagram`, `social.facebook`, `menuUrl`, `website`
+- `city` (the small pill), `address`, `mapsUrl` (your Google Maps share link)
+- `directionsTo` — where the **Get Directions** button navigates. A Google Maps
+  plus code works well (it pins the exact spot); if empty, `address` is used
+- `phone` in full international format (e.g. `+9779865098275`) and `whatsapp`
+  as digits only (e.g. `9779865098275`). Leave `whatsapp` empty if the number
+  isn't on WhatsApp, and that button is hidden
+- `social.instagram`, `social.facebook`, `social.tiktok`, `menuUrl`, `website`
 - `footerMessage`
 
 **How each link is presented** — in the `CONTACT_LINKS` list:
@@ -119,9 +123,12 @@ For `feature` and `tile` links, `tone` picks the colour: `orange`, `yellow` or
 `website`) or set `enabled: false`. **To reorder**, reorder the list.
 
 ### Replace the images
-- `public/logo.svg` → your logo (square works best; PNG/JPG/SVG)
+- `public/logo.svg` → your logo. The included one is the Kaffika stag, traced
+  from the supplied JPG into a crisp vector with a transparent background (an
+  SVG or a PNG with a transparent background works best, since a JPG brings its
+  own background colour). It is shown large, on a cream plate in the hero arch.
 - `public/og-image.png` → the picture shown when your link is shared (see below)
-- `public/favicon.svg` → browser tab icon
+- `public/favicon.svg` → browser tab icon (a thickened version of the logo)
 
 ### Update SEO / social preview
 Edit the `<title>`, `<meta name="description">` and the Open Graph / Twitter
@@ -130,9 +137,9 @@ URL in `og:url`, `og:image` and `twitter:image`.
 
 `public/og-image.png` (1200×630) is what WhatsApp, Facebook, iMessage and X show
 when someone shares your link — likely, since cafés share their QR page. The
-included one is on-brand and contains no café name, so it works as-is; replace it
-with a photo or logo graphic of your own when you have one. Use a **PNG or JPG**
-(social platforms don't render SVG).
+included one shows the Kaffika logo, name and location; replace it with a photo
+or your own graphic whenever you like. Use a **PNG or JPG** (social platforms
+don't render SVG).
 
 ---
 
@@ -192,7 +199,7 @@ physical business card.
 ├─ public/
 │  ├─ fonts/                       # Bundled Lilita One, Fraunces, DM Sans (.woff2)
 │  ├─ favicon.svg                  # Browser tab icon
-│  ├─ logo.svg                     # Café logo placeholder — replace
+│  ├─ logo.svg                     # Kaffika logo (vector, transparent)
 │  └─ og-image.png                 # Link-share preview (1200×630)
 ├─ src/
 │  ├─ main.jsx                     # App entry

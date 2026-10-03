@@ -5,30 +5,32 @@
  *  Edit everything about your café here. No other file needs to change.
  *
  *  Tips:
- *   - phone:      full international format, e.g. "+15551234567"
- *   - whatsapp:   digits only, with country code, no "+" e.g. "15551234567"
- *   - To hide a link, clear its value (or set `enabled: false` in CONTACT_LINKS).
+ *   - phone:      full international format, e.g. "+9779865098275"
+ *   - whatsapp:   digits only, with country code, no "+" e.g. "9779865098275"
+ *   - To hide a link, leave its value empty ('') — it simply disappears.
+ *     To add it back, paste the URL in.
  *   - Brand colours and fonts live in tailwind.config.js.
  * ============================================================================
  */
 
 export const cafeConfig = {
   // --- Identity -------------------------------------------------------------
-  name: 'Café Aroma',
+  name: 'Kaffika',
+  // PLACEHOLDER: write your own line.
   tagline: 'Where every cup tells a story',
-  // Logo lives in /public. Replace the placeholder with your own (square
-  // PNG/JPG/SVG works best) and keep the filename, or update the path here.
+  // Logo lives in /public (public/logo.svg). It is shown large in the hero
+  // arch. Replace the file to change it, or point this at another path.
   logo: '/logo.svg',
-  // Optional hero photo shown in the arch window. Leave empty to use the
-  // built-in illustration. Portrait works best (~800×1000, under 150 KB),
+  // Optional hero photo shown in the arch INSTEAD of the logo. Leave empty to
+  // show the logo. Portrait works best (~800×1000, under 150 KB),
   // e.g. '/hero.jpg' after placing hero.jpg in /public.
   heroImage: '',
 
-  // --- Brand flourishes -----------------------------------------------------
+  // --- Brand flourishes (PLACEHOLDER copy: change to suit your café) --------
   // Text that circles the rotating seal. Keep it short and end with " • ".
   badgeText: 'Freshly brewed • Made with love • ',
-  // Phrases that scroll along the yellow tape under the hero.
-  ticker: ['Freshly brewed', 'Slow mornings', 'Good company', 'Warm pastries'],
+  // Words that scroll along the yellow tape under the hero (shown in capitals).
+  ticker: ['Kitchen', 'Coffee', 'Community'],
   // Small headings used on the page.
   copy: {
     online: 'Find us online',
@@ -36,43 +38,50 @@ export const cafeConfig = {
   },
 
   // --- Location -------------------------------------------------------------
-  city: 'Downtown · Your City',
-  address: '123 Coffee Street, Downtown, Your City 12345',
+  city: 'Budhanilkantha',
+  address: 'Budhanilkantha, Bagmati Province 44600, Nepal',
+  // Where "Get Directions" navigates. Google Maps understands plus codes
+  // (the "Q9H4+XXM" code is your listing's exact spot); if this is left
+  // empty, the address above is used instead.
+  directionsTo: 'Q9H4+XXM Budhanilkantha, Bagmati Province 44600, Nepal',
 
   // --- Contact --------------------------------------------------------------
-  phone: '+15551234567', // full international format
-  whatsapp: '15551234567', // digits only, country code first, no "+"
+  phone: '+9779865098275', // full international format (Nepal = +977)
+  // The same number is used for WhatsApp. If it is NOT on WhatsApp, set this
+  // to '' and the WhatsApp button and footer icon are hidden.
+  whatsapp: '9779865098275', // digits only, country code first, no "+"
   whatsappMessage: 'Hi! I found you via your QR code and would love to know more.',
 
   // --- Social & web ---------------------------------------------------------
   social: {
-    instagram: 'https://instagram.com/your_cafe',
-    facebook: 'https://facebook.com/your_cafe',
+    instagram: 'https://www.instagram.com/kaf_fika',
+    facebook: 'https://www.facebook.com/share/1ED8rag2VA/',
+    tiktok: 'https://www.tiktok.com/@kaffika91',
   },
-  menuUrl: 'https://your-cafe.com/menu',
-  website: 'https://your-cafe.com',
+  // Not provided yet: paste a URL to show these links.
+  menuUrl: '',
+  website: '',
 
   // --- Google Maps ----------------------------------------------------------
-  // `mapsUrl`: a share link to your exact location (Google Maps → Share).
-  // The "Get directions" link is generated below from the address.
-  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+Aroma+Your+City',
+  // Your listing's share link (Google Maps → Share). Opens in the Maps app.
+  mapsUrl: 'https://maps.app.goo.gl/HduZ76wvy7NF27nH9',
 
   // --- Footer ---------------------------------------------------------------
   footerMessage: 'Thanks for stopping by — we can’t wait to serve you.',
 };
 
 /**
- * Google Maps "Get Directions" link, built from the address so visitors are
- * routed to the café from wherever they are.
+ * Google Maps "Get Directions" link: opens turn-by-turn directions straight
+ * to the café from wherever the visitor is.
  */
 export const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-  cafeConfig.address
+  cafeConfig.directionsTo || cafeConfig.address
 )}`;
 
 /**
  * The contact / social links shown on the page. Reorder, remove, or add freely.
  *
- *  icon    instagram | facebook | whatsapp | maps | phone | menu | website
+ *  icon    instagram | facebook | tiktok | whatsapp | maps | phone | menu | website
  *  layout  how the link is presented, which also sets its importance:
  *            'feature' – the big pill button (use for the #1 action)
  *            'tile'    – bold square tiles, shown two across
@@ -106,6 +115,17 @@ export const CONTACT_LINKS = [
     tone: 'yellow',
   },
   {
+    id: 'instagram',
+    icon: 'instagram',
+    title: 'Instagram',
+    label: 'Follow us on Instagram',
+    href: cafeConfig.social.instagram,
+    enabled: Boolean(cafeConfig.social.instagram),
+    external: true,
+    layout: 'tile',
+    tone: 'brown',
+  },
+  {
     id: 'menu',
     icon: 'menu',
     title: 'Menu',
@@ -114,17 +134,7 @@ export const CONTACT_LINKS = [
     enabled: Boolean(cafeConfig.menuUrl),
     external: true,
     layout: 'tile',
-    tone: 'brown',
-  },
-  {
-    id: 'instagram',
-    icon: 'instagram',
-    title: 'Instagram',
-    label: 'Follow us on Instagram',
-    href: cafeConfig.social.instagram,
-    enabled: Boolean(cafeConfig.social.instagram),
-    external: true,
-    layout: 'row',
+    tone: 'yellow',
   },
   {
     id: 'facebook',
@@ -133,6 +143,16 @@ export const CONTACT_LINKS = [
     label: 'Connect with us on Facebook',
     href: cafeConfig.social.facebook,
     enabled: Boolean(cafeConfig.social.facebook),
+    external: true,
+    layout: 'row',
+  },
+  {
+    id: 'tiktok',
+    icon: 'tiktok',
+    title: 'TikTok',
+    label: 'Watch us on TikTok',
+    href: cafeConfig.social.tiktok,
+    enabled: Boolean(cafeConfig.social.tiktok),
     external: true,
     layout: 'row',
   },
