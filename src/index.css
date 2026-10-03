@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-cream font-sans text-brown antialiased;
+    min-height: 100dvh;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  ::selection {
+    @apply bg-yellow text-brown;
+  }
+
+  /* Visible focus for keyboard users. Ink-brown reads on cream, yellow and
+     orange alike; surfaces that are brown override this to yellow. */
+  :focus-visible {
+    outline: 3px solid theme('colors.brown');
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Café name. Sized from the width of the column it lives in (62% of the
+     viewport minus the 1.25rem page gutters), so the longest word always
+     fits at any phone width. --name-shrink (set in CafeProfile) scales it
+     down further for names with a very long word. */
+  .hero-name {
+    font-size: clamp(
+      2.25rem,
+      calc((100vw - 2.5rem) * 0.205 * var(--name-shrink, 1)),
+      calc(5.25rem * var(--name-shrink, 1))
+    );
+  }
+
+  /* Arch window: semicircular top, softly rounded bottom. Percentages (not a
+     huge px radius) keep the bottom corners from being scaled away. Tuned for
+     the 4:5 frame used in HeroArt. */
+  .arch {
+    border-radius: 50% 50% 1.1rem 1.1rem / 40% 40% 1.1rem 1.1rem;
+  }
+
+  /* Café awning: scalloped stripes that hang from the top edge of the footer */
+  .awning {
+    height: 14px;
+    background-image:
+      radial-gradient(circle at 14px 0, theme('colors.cream') 13px, transparent 13.5px),
+      radial-gradient(circle at 42px 0, theme('colors.yellow') 13px, transparent 13.5px);
+    background-size: 56px 14px;
+    background-repeat: repeat-x;
+  }
+}
+
+/* Motion: respect the visitor's preference everywhere, including the
+   looping decorations that are driven by CSS rather than Framer Motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

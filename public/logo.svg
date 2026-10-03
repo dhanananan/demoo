@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Café logo placeholder">
+  <circle cx="60" cy="60" r="60" fill="#FDE3CF"/>
+  <circle cx="60" cy="60" r="49" fill="#F8A91F"/>
+  <ellipse cx="59" cy="94" rx="31" ry="5" fill="#632713"/>
+  <path d="M81 58c14-1 15 18-1 20" fill="none" stroke="#632713" stroke-width="6" stroke-linecap="round"/>
+  <path d="M36 52h46v14c0 14-10 25-23 25S36 80 36 66V52Z" fill="#632713"/>
+  <ellipse cx="59" cy="52" rx="23" ry="5" fill="#FDE3CF"/>
+  <ellipse cx="59" cy="52.4" rx="19" ry="3.4" fill="#EC6426"/>
+  <path d="M42 62v4c0 6 2 11 6 15" fill="none" stroke="#FDE3CF" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+  <g fill="none" stroke="#632713" stroke-width="4.5" stroke-linecap="round">
+    <path d="M48 44c-4-5 4-8 0-14"/>
+    <path d="M60 41c-4-5 4-8 0-14"/>
+    <path d="M72 44c-4-5 4-8 0-14"/>
+  </g>
+</svg>

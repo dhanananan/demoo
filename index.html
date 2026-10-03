@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Mobile browser chrome picks up the brand orange; light-only stops
+         auto-dark-mode from recolouring the palette -->
+    <meta name="theme-color" content="#EC6426" />
+    <meta name="color-scheme" content="light only" />
+
+    <!-- Primary SEO meta (placeholders — edit for your café) -->
+    <title>Café Aroma — Digital Business Card</title>
+    <meta
+      name="description"
+      content="Welcome to Café Aroma. Find us on Instagram, Facebook & WhatsApp, explore our menu, get directions, or give us a call — all in one tap."
+    />
+    <meta name="author" content="Café Aroma" />
+
+    <!-- Open Graph / social sharing (update url & image for production) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Café Aroma" />
+    <meta property="og:title" content="Café Aroma — Where every cup tells a story" />
+    <meta
+      property="og:description"
+      content="Discover Café Aroma. All our social links, menu, location and contact in one tap."
+    />
+    <meta property="og:url" content="https://your-cafe.vercel.app/" />
+    <meta property="og:image" content="https://your-cafe.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Café Aroma — Where every cup tells a story" />
+    <meta
+      name="twitter:description"
+      content="Discover Café Aroma. All our social links, menu, location and contact in one tap."
+    />
+    <meta name="twitter:image" content="https://your-cafe.vercel.app/og-image.png" />
+
+    <!-- Fonts are self-hosted (see src/fonts.css), so they never depend on a
+         third-party server. Preload the three faces the first screen needs so
+         the hero text doesn't flash a fallback font. -->
+    <link rel="preload" href="/fonts/lilita-one-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
