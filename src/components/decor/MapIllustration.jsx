@@ -1,5 +1,6 @@
 /**
- * A stylised street map with a pulsing pin. It's a graphic, not a real map:
+ * A stylised street map with a pulsing pin, drawn as a two-tone paper map
+ * (cream streets on a brown-tinted ground). It's a graphic, not a real map:
  * it tells first-time visitors "this is a place you can navigate to" at a
  * glance, with no map embed, API key or network request.
  */
@@ -12,16 +13,17 @@ export default function MapIllustration({ className = '' }) {
       aria-hidden="true"
       focusable="false"
     >
-      <rect width="350" height="130" className="fill-yellow" />
+      {/* Ground: brown at low strength, so it reads as a darker cream */}
+      <rect width="350" height="130" className="fill-brown" opacity="0.16" />
 
       {/* City blocks and green space */}
-      <g className="fill-brown" opacity="0.12">
+      <g className="fill-brown" opacity="0.14">
         <rect x="14" y="52" width="58" height="38" rx="6" />
         <rect x="284" y="52" width="54" height="38" rx="6" />
         <rect x="14" y="108" width="40" height="30" rx="6" />
         <rect x="296" y="4" width="40" height="24" rx="6" />
       </g>
-      <g className="fill-orange">
+      <g className="fill-brown" opacity="0.3">
         <rect x="100" y="52" width="46" height="40" rx="8" />
         <circle cx="228" cy="74" r="15" />
       </g>
@@ -59,7 +61,7 @@ export default function MapIllustration({ className = '' }) {
         className="fill-brown"
       />
       <circle cx="176" cy="52" r="9" className="fill-cream" />
-      <circle cx="176" cy="52" r="4" className="fill-orange" />
+      <circle cx="176" cy="52" r="4" className="fill-brown" />
     </svg>
   );
 }

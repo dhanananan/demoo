@@ -25,11 +25,11 @@
   }
 
   ::selection {
-    @apply bg-yellow text-brown;
+    @apply bg-brown text-cream;
   }
 
-  /* Visible focus for keyboard users. Ink-brown reads on cream, yellow and
-     orange alike; surfaces that are brown override this to yellow. */
+  /* Visible focus for keyboard users. Ink-brown reads on the cream page;
+     surfaces that are brown override this to cream. */
   :focus-visible {
     outline: 3px solid theme('colors.brown');
     outline-offset: 3px;
@@ -44,12 +44,24 @@
     border-radius: 50% 50% 1.1rem 1.1rem / 40% 40% 1.1rem 1.1rem;
   }
 
+  /* Café name in the hero: cream letters with a brown halo, so the last letter
+     stays readable where it crosses the cream arch (on the brown hero the halo
+     is invisible), plus a faint offset shadow for depth. */
+  .name-outline {
+    text-shadow:
+      -2px -2px 0 theme('colors.brown'), 2px -2px 0 theme('colors.brown'),
+      -2px 2px 0 theme('colors.brown'), 2px 2px 0 theme('colors.brown'),
+      0 -2px 0 theme('colors.brown'), 0 2px 0 theme('colors.brown'),
+      -2px 0 0 theme('colors.brown'), 2px 0 0 theme('colors.brown'),
+      4px 4px 0 theme('colors.cream / 35%');
+  }
+
   /* Café awning: scalloped stripes that hang from the top edge of the footer */
   .awning {
     height: 14px;
     background-image:
       radial-gradient(circle at 14px 0, theme('colors.cream') 13px, transparent 13.5px),
-      radial-gradient(circle at 42px 0, theme('colors.yellow') 13px, transparent 13.5px);
+      radial-gradient(circle at 42px 0, theme('colors.cream / 45%') 13px, transparent 13.5px);
     background-size: 56px 14px;
     background-repeat: repeat-x;
   }

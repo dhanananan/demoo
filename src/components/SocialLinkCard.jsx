@@ -7,7 +7,7 @@ const entrance = { type: 'spring', stiffness: 200, damping: 20 };
  * row. Every link on the page uses this, so they all look the same.
  *
  * It runs edge to edge (the negative margin cancels the page gutter) so the
- * whole width is the tap target, and a yellow wash sweeps across on hover and
+ * whole width is the tap target, and a brown wash sweeps across on hover and
  * fills on tap. The entrance animation is driven by the parent list, which
  * supplies the stagger.
  *
@@ -30,14 +30,14 @@ export default function SocialLinkCard({ Icon, title, label, ariaLabel, href, ex
         hidden: { opacity: 0, y: 18 },
         visible: { opacity: 1, y: 0, transition: entrance },
       }}
-      style={{ backgroundColor: 'rgba(248, 169, 31, 0)' }}
-      whileTap={{ backgroundColor: 'rgba(248, 169, 31, 1)' }}
+      style={{ backgroundColor: 'rgba(99, 39, 19, 0)' }}
+      whileTap={{ backgroundColor: 'rgba(99, 39, 19, 0.14)' }}
       className="group relative -mx-5 flex min-h-[5rem] items-center gap-4 overflow-hidden px-5 py-4 focus-visible:outline-offset-[-4px]"
     >
-      {/* Yellow wash that sweeps across on hover */}
+      {/* Brown wash that sweeps across on hover */}
       <span
         aria-hidden="true"
-        className="absolute inset-0 origin-left scale-x-0 bg-yellow transition-transform duration-300 ease-out group-hover:scale-x-100"
+        className="absolute inset-0 origin-left scale-x-0 bg-brown/[0.12] transition-transform duration-300 ease-out group-hover:scale-x-100"
       />
 
       {/* Fixed-width column so every title lines up, whatever the icon's shape */}
@@ -57,7 +57,7 @@ export default function SocialLinkCard({ Icon, title, label, ariaLabel, href, ex
           {title}
         </span>
         {label && (
-          // 90% ink keeps this above 4.5:1 even on the yellow hover wash
+          // 90% ink keeps this above 4.5:1 even on the brown hover wash
           <span className="block text-[0.9375rem] leading-snug text-brown/90">{label}</span>
         )}
       </span>

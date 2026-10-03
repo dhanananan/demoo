@@ -17,7 +17,7 @@ export const cafeConfig = {
   // --- Identity -------------------------------------------------------------
   name: 'Kaf-Fika',
   // The line on the tilted sticker under the name.
-  tagline: 'Kaf-Fika by Feast & Frost',
+  tagline: 'by Feast & Frost',
   // Logo lives in /public (public/logo.svg). It is shown large in the hero
   // arch. Replace the file to change it, or point this at another path.
   logo: '/logo.svg',
@@ -29,7 +29,7 @@ export const cafeConfig = {
   // --- Brand flourishes (PLACEHOLDER copy: change to suit your café) --------
   // Text that circles the rotating seal. Keep it short and end with " • ".
   badgeText: 'Freshly brewed • Made with love • ',
-  // Words that scroll along the yellow tape under the hero (shown in capitals).
+  // Words that scroll along the cream tape under the hero (shown in capitals).
   ticker: ['Kitchen', 'Coffee', 'Community'],
   // Small headings used on the page.
   copy: {

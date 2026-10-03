@@ -21,7 +21,7 @@ export default function BrandBadge({ className = '' }) {
   return (
     <div
       aria-hidden="true"
-      className={`relative rounded-full border-2 border-brown bg-yellow shadow-[0_3px_0_0_theme(colors.orange)] ${className}`}
+      className={`relative rounded-full border-2 border-cream bg-brown ${className}`}
     >
       {/* The ring of text turns slowly; the centre stays put */}
       <div className="absolute inset-0 animate-spin-slow">
@@ -29,7 +29,7 @@ export default function BrandBadge({ className = '' }) {
           <defs>
             <path id={pathId} d={RING_PATH} />
           </defs>
-          <text className="fill-brown font-sans font-bold" fontSize="11.5">
+          <text className="fill-cream font-sans font-bold" fontSize="11.5">
             <textPath
               href={`#${pathId}`}
               textLength={CIRCUMFERENCE}
@@ -42,8 +42,8 @@ export default function BrandBadge({ className = '' }) {
       </div>
 
       <div className="absolute inset-0 grid place-items-center">
-        <span className="grid h-[38%] w-[38%] place-items-center rounded-full bg-brown">
-          <Bean className="h-[58%] rotate-[28deg] text-yellow" />
+        <span className="grid h-[38%] w-[38%] place-items-center rounded-full bg-cream">
+          <Bean className="h-[58%] rotate-[28deg] text-brown" />
         </span>
       </div>
     </div>

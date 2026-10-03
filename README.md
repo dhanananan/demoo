@@ -61,7 +61,15 @@ audit reports 0 violations.
 
 **Layout:** on a phone the page *is* the card, edge to edge. From tablet up it
 becomes a compact centred card on a colour-blocked backdrop — it never stretches
-across the screen. Reduced-motion preferences are respected everywhere.
+across the screen.
+
+**Coffee-bean animations:** beans slowly tumble down through the hero (behind
+the name and logo), the faint resting beans bob, the beans on the ticker tape
+rock, and the big footer beans turn. They are all tuned in
+[`src/components/FallingBeans.jsx`](src/components/FallingBeans.jsx) (the falling
+beans: position, size, speed) and the `bean-*` entries in `tailwind.config.js`.
+Visitors who have reduced motion switched on in their phone settings see none of
+the movement: everything stands still and the falling beans are not drawn.
 
 ---
 
@@ -211,13 +219,14 @@ physical business card.
 │     ├─ CafeProfile.jsx           # Logo, location, animated name, tagline sticker
 │     ├─ HeroArt.jsx               # Arch window (logo or photo) + seal
 │     ├─ BrandBadge.jsx            # Rotating text seal
-│     ├─ BrandTicker.jsx           # Scrolling yellow tape
+│     ├─ BrandTicker.jsx           # Scrolling cream tape
+│     ├─ FallingBeans.jsx          # Coffee beans tumbling through the hero
 │     ├─ ContactLinks.jsx          # The link list, built from the config
 │     ├─ SocialLinkCard.jsx        # One link row: icon, title, label
 │     ├─ LocationSection.jsx       # Street-map graphic, address, Get Directions
 │     ├─ CafeFooter.jsx            # Awning edge, message, socials, copyright
 │     ├─ icons/BrandIcons.jsx      # Instagram / Facebook / WhatsApp marks
-│     └─ decor/                    # Bean + sparkle shapes, cup & map illustrations
+│     └─ decor/                    # Bean + sparkle shapes, map illustration
 ├─ tailwind.config.js              # Brand palette, fonts, shadows, keyframes
 ├─ postcss.config.js
 ├─ vite.config.js

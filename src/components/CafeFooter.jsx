@@ -25,20 +25,23 @@ export default function CafeFooter() {
   return (
     <footer className="relative overflow-hidden bg-brown px-5 pb-8 pt-16 text-center text-cream">
       <div aria-hidden="true" className="awning absolute inset-x-0 top-0" />
+      {/* Two big faint beans turning very slowly (one each way) */}
       <Bean
         aria-hidden="true"
-        className="absolute -right-3 bottom-10 h-24 rotate-[24deg] text-cream/[0.07]"
+        className="absolute -right-3 bottom-10 h-24 animate-spin-slow text-cream/[0.07]"
+        style={{ animationDuration: '70s' }}
       />
       <Bean
         aria-hidden="true"
-        className="absolute -left-2 top-24 h-16 -rotate-[32deg] text-cream/[0.07]"
+        className="absolute -left-2 top-24 h-16 animate-spin-slow text-cream/[0.07]"
+        style={{ animationDuration: '55s', animationDirection: 'reverse' }}
       />
 
       <p className="relative mx-auto max-w-[17rem] text-balance font-serif text-2xl italic leading-snug">
         {cafeConfig.footerMessage}
       </p>
 
-      <p className="relative mt-6 font-display text-4xl leading-none text-yellow">
+      <p className="relative mt-6 font-display text-4xl leading-none text-cream">
         {cafeConfig.name}
       </p>
 
@@ -51,7 +54,7 @@ export default function CafeFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${label} (opens in a new tab)`}
-                className="grid h-11 w-11 place-items-center rounded-full border-2 border-cream/60 text-cream transition-colors duration-200 hover:border-yellow hover:bg-yellow hover:text-brown focus-visible:outline-yellow"
+                className="grid h-11 w-11 place-items-center rounded-full border-2 border-cream/60 text-cream transition-colors duration-200 hover:border-cream hover:bg-cream hover:text-brown focus-visible:outline-cream"
               >
                 <Icon size={20} aria-hidden="true" />
               </a>

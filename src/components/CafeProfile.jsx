@@ -122,7 +122,7 @@ export default function CafeProfile() {
           initial="hidden"
           animate={ready ? 'visible' : 'hidden'}
           style={{ fontSize: fontSize ?? undefined, visibility: ready ? 'visible' : 'hidden' }}
-          className="w-full font-display leading-[0.88] text-cream [text-shadow:3px_3px_0_theme(colors.orange)]"
+          className="name-outline w-full font-display leading-[0.88] text-cream"
         >
           <span className="sr-only">{cafeConfig.name}</span>
           {words.map((word, w) => (
@@ -142,7 +142,8 @@ export default function CafeProfile() {
           transition={{ type: 'spring', stiffness: 200, damping: 14, delay: 0.75 }}
           className="origin-left"
         >
-          <p className="inline-block max-w-[9.5rem] -rotate-2 text-balance rounded-lg border-2 border-brown bg-cream px-3 py-2 font-serif text-[1.0625rem] font-medium italic leading-snug text-brown shadow-[0_3px_0_0_theme(colors.orange)]">
+          {/* Brown label with a thin cream edge, so it reads on the brown hero */}
+          <p className="inline-block max-w-[6.5rem] -rotate-2 text-balance rounded-lg border-2 border-cream/70 bg-brown px-3 py-2 font-serif text-[1.0625rem] font-medium italic leading-snug text-cream">
             {cafeConfig.tagline}
           </p>
         </motion.div>

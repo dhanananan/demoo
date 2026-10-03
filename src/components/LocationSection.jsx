@@ -39,10 +39,10 @@ export default function LocationSection() {
           rel="noopener noreferrer"
           aria-label="Get directions to the café on Google Maps (opens in a new tab)"
           whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}
-          className="group mt-5 flex items-center justify-center gap-2 rounded-full border-2 border-brown bg-brown px-5 py-3.5 text-base font-bold text-cream transition-colors duration-200 hover:bg-yellow hover:text-brown"
+          className="group mt-5 flex items-center justify-center gap-2 rounded-full border-2 border-brown bg-brown px-5 py-3.5 text-base font-bold text-cream transition-colors duration-200 hover:bg-cream hover:text-brown"
         >
           <Navigation
-            className="h-[1.125rem] w-[1.125rem] text-yellow transition-colors duration-200 group-hover:text-brown"
+            className="h-[1.125rem] w-[1.125rem] text-cream transition-colors duration-200 group-hover:text-brown"
             aria-hidden="true"
           />
           Get Directions

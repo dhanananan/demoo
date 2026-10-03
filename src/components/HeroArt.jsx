@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { Coffee } from 'lucide-react';
 import { cafeConfig } from '../config/cafeConfig';
 import BrandBadge from './BrandBadge';
-import CupIllustration from './decor/CupIllustration';
 
 /**
- * The hero image, framed as an arch window with a hard brown offset shadow
- * and a rotating seal pinned to its corner. It shows, in order of preference:
+ * The hero image, framed as a cream arch window with a fainter offset arch
+ * behind it for depth, and a rotating seal pinned to its corner. It shows, in
+ * order of preference:
  *   1. `heroImage`, a photo, if one is configured
- *   2. the café's logo on a cream plate (so the mark is the star)
- *   3. a built-in cup illustration, if neither can be loaded
+ *   2. the café's logo (brown line art on the cream arch)
+ *   3. a coffee-cup icon, if neither can be loaded
  */
 export default function HeroArt({ className = '' }) {
   const prefersReducedMotion = useReducedMotion();
@@ -29,18 +30,14 @@ export default function HeroArt({ className = '' }) {
         transition={{ type: 'spring', stiffness: 120, damping: 18, delay: 0.25 }}
         className="relative"
       >
-        {/* Offset shadow arch (orange, so it shows against the brown hero) */}
+        {/* Offset arch: cream at low strength, so it reads as a tan edge */}
         <div
           aria-hidden="true"
-          className="arch absolute inset-0 translate-x-2 translate-y-2 bg-orange"
+          className="arch absolute inset-0 translate-x-2 translate-y-2 bg-cream/30"
         />
 
         {/* The arch itself */}
-        <div
-          className={`arch relative aspect-[4/5] overflow-hidden border-2 border-brown ${
-            showLogo ? 'bg-yellow' : 'bg-cream'
-          }`}
-        >
+        <div className="arch relative aspect-[4/5] overflow-hidden border-2 border-cream bg-cream">
           {showPhoto && (
             <img
               src={cafeConfig.heroImage}
@@ -55,28 +52,24 @@ export default function HeroArt({ className = '' }) {
           )}
 
           {showLogo && (
-            <>
-              {/* Cream plate behind the mark, so thin line-art and the orange
-                  flame both stay clear against the yellow arch */}
-              <span
-                aria-hidden="true"
-                className="absolute left-1/2 top-[57%] aspect-square w-[94%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cream"
-              />
-              {/* Inset from the top so the antler tips clear the arch's curve */}
-              <img
-                src={cafeConfig.logo}
-                alt={`${cafeConfig.name} logo`}
-                width={400}
-                height={500}
-                decoding="async"
-                fetchpriority="high"
-                className="absolute left-[11%] top-[16%] h-[76%] w-[78%] object-contain"
-                onError={() => setLogoFailed(true)}
-              />
-            </>
+            // Inset from the top so the antler tips clear the arch's curve
+            <img
+              src={cafeConfig.logo}
+              alt={`${cafeConfig.name} logo`}
+              width={400}
+              height={500}
+              decoding="async"
+              fetchpriority="high"
+              className="absolute left-[11%] top-[16%] h-[76%] w-[78%] object-contain"
+              onError={() => setLogoFailed(true)}
+            />
           )}
 
-          {!showPhoto && !showLogo && <CupIllustration className="h-full w-full" />}
+          {!showPhoto && !showLogo && (
+            <div className="grid h-full w-full place-items-center">
+              <Coffee className="h-1/3 w-1/3 text-brown" strokeWidth={1.5} aria-hidden="true" />
+            </div>
+          )}
         </div>
 
         <motion.div
