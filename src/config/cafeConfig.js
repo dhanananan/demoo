@@ -48,7 +48,7 @@ export const cafeConfig = {
   // Each number gets its own tap-to-call row, in this order. `number` is what
   // a tap dials (full international format, Nepal = +977); `display` is how it
   // is written on the page. Add or remove entries freely.
-  phones: [{ number: '+9779865098275', display: '9865098275' }],
+  phones: [{ number: '+9779851444775', display: '9851444775' }],
   // The WhatsApp number. It gets its own row (the WhatsApp logo + the number),
   // so visitors can tell it from the call number, and a tap opens a chat.
   // Digits only, country code first, no "+". Leave empty to hide the row and
