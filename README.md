@@ -115,11 +115,13 @@ source of truth. Everything below is edited there.
 - `city` (the small pill), `address`, `mapsUrl` (your Google Maps share link)
 - `directionsTo` — where the **Get Directions** button navigates. A Google Maps
   plus code works well (it pins the exact spot); if empty, `address` is used
-- `phone` in full international format (e.g. `+9779865098275`) is what a tap
-  dials; `phoneDisplay` (e.g. `9865098275`) is how the number is written on the
-  page. The phone row shows the number alone
-- `whatsapp` is currently empty, so there is no WhatsApp row or footer icon. To
-  bring them back, enter the number as digits only (e.g. `9779865098275`)
+- `phones` is a list; each number gets its own tap-to-call row showing the
+  number alone. `number` (full international format, e.g. `+9779865098275`) is
+  what a tap dials; `display` (e.g. `9865098275`) is how it is written on the page
+- `whatsapp` (digits only, e.g. `9779851444775`) and `whatsappDisplay` (e.g.
+  `9851444775`) give the WhatsApp number its own row: the WhatsApp logo plus the
+  number, so it can't be mistaken for the call number. A tap opens a chat. Leave
+  `whatsapp` empty to hide that row and the footer WhatsApp icon
 - `social.instagram`, `social.facebook`, `social.tiktok`, `menuUrl`, `website`
 - `footerMessage`
 

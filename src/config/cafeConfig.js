@@ -5,7 +5,7 @@
  *  Edit everything about your café here. No other file needs to change.
  *
  *  Tips:
- *   - phone:      full international format, e.g. "+9779865098275"
+ *   - phones:     full international format, e.g. "+9779865098275"
  *   - whatsapp:   digits only, with country code, no "+" e.g. "9779865098275"
  *   - To hide a link, leave its value empty ('') — it simply disappears.
  *     To add it back, paste the URL in.
@@ -45,13 +45,17 @@ export const cafeConfig = {
   directionsTo: 'Q9H4+XXM Budhanilkantha, Bagmati Province 44600, Nepal',
 
   // --- Contact --------------------------------------------------------------
-  phone: '+9779865098275', // full international format (Nepal = +977)
-  // How the number is written on the page (the tap still dials `phone` above).
-  phoneDisplay: '9865098275',
-  // WhatsApp is switched OFF (empty hides the WhatsApp row and footer icon).
-  // To bring it back, put the number here: digits only, country code first,
-  // no "+", e.g. '9779865098275'.
-  whatsapp: '',
+  // Each number gets its own tap-to-call row, in this order. `number` is what
+  // a tap dials (full international format, Nepal = +977); `display` is how it
+  // is written on the page. Add or remove entries freely.
+  phones: [{ number: '+9779865098275', display: '9865098275' }],
+  // The WhatsApp number. It gets its own row (the WhatsApp logo + the number),
+  // so visitors can tell it from the call number, and a tap opens a chat.
+  // Digits only, country code first, no "+". Leave empty to hide the row and
+  // the footer WhatsApp icon.
+  whatsapp: '9779851444775',
+  // How the WhatsApp number is written on the page.
+  whatsappDisplay: '9851444775',
   whatsappMessage: 'Hi! I found you via your QR code and would love to know more.',
 
   // --- Social & web ---------------------------------------------------------
@@ -85,32 +89,39 @@ export const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination
  * icon, a title and a line of text), so reorder, remove or add freely.
  *
  *  icon  instagram | facebook | tiktok | whatsapp | maps | phone | menu | website
+ *        (the phone rows come from `phones` above, the WhatsApp row from `whatsapp`)
  *  title the bold name   ·   label the line underneath it (leave '' for none;
  *  then also set `ariaLabel`, the text a screen reader should announce)
  */
 export const CONTACT_LINKS = [
+  // One row per number in `phones`. Each shows the number alone: no label line.
+  // `ariaLabel` is what a screen reader announces, since a number by itself
+  // doesn't say what it does.
+  ...cafeConfig.phones
+    .filter((phone) => phone.number)
+    .map((phone, i) => ({
+      id: `phone-${i}`,
+      icon: 'phone',
+      title: phone.display || phone.number,
+      label: '',
+      ariaLabel: `Call ${phone.display || phone.number}`,
+      href: `tel:${phone.number}`,
+      enabled: true,
+      external: false,
+    })),
+  // The WhatsApp number, also shown alone. The WhatsApp logo (instead of the
+  // phone icon) is what tells visitors it is a WhatsApp number.
   {
     id: 'whatsapp',
     icon: 'whatsapp',
-    title: 'WhatsApp',
-    label: 'Chat with us on WhatsApp',
+    title: cafeConfig.whatsappDisplay || cafeConfig.whatsapp,
+    label: '',
+    ariaLabel: `Chat on WhatsApp with ${cafeConfig.whatsappDisplay || cafeConfig.whatsapp}`,
     href: `https://wa.me/${cafeConfig.whatsapp}?text=${encodeURIComponent(
       cafeConfig.whatsappMessage
     )}`,
     enabled: Boolean(cafeConfig.whatsapp),
     external: true,
-  },
-  {
-    id: 'phone',
-    icon: 'phone',
-    // Shows the number alone: no label line. `ariaLabel` is what a screen
-    // reader announces, since the number by itself doesn't say what it does.
-    title: cafeConfig.phoneDisplay || cafeConfig.phone,
-    label: '',
-    ariaLabel: `Call ${cafeConfig.phoneDisplay || cafeConfig.phone}`,
-    href: `tel:${cafeConfig.phone}`,
-    enabled: Boolean(cafeConfig.phone),
-    external: false,
   },
   {
     id: 'maps',
